@@ -97,7 +97,7 @@ api:
   on_client_disconnected:
     - script.execute: control_leds
   encryption:
-    key: 9h+gCXIQUrITxs6uUrhLnv34hr7W5cPgSmeVpmdJdQA=   # <-- change this
+    key: !secret (or hardcode)  # <-- change this
 
 ota:
   - platform: esphome
@@ -859,12 +859,12 @@ script:
             - homeassistant.service:
                 service: media_player.volume_up
                 data:
-                  entity_id: media_player.kitchen_speaker_mini
+                  entity_id: media_player.your_entity_here   # <-- change this
           else:
             - homeassistant.service:
                 service: media_player.volume_down
                 data:
-                  entity_id: media_player.kitchen_speaker_mini
+                  entity_id: media_player.your_entity_here   # <-- change this
       - script.execute: control_leds
       - delay: 1s
       - lambda: id(dial_touched) = false;
@@ -1203,12 +1203,12 @@ voice_assistant:
     - homeassistant.service:
         service: media_player.volume_set
         data:
-          entity_id: media_player.kitchen_speaker_mini
-          volume_level: "0.4"
+          entity_id: media_player.your_entity_here    # <-- change this
+          volume_level: "0.4"                         # <-- change this to adjust default output volume
     - homeassistant.service:
         service: tts.cloud_say
         data:
-          entity_id: media_player.kitchen_speaker_mini
+          entity_id: media_player.your_entity_here    # <-- change this
           message: !lambda "return x;"
           cache: "true"
 
